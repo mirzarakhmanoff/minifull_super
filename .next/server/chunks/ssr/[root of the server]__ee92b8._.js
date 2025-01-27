@@ -70,14 +70,14 @@ const menuItems = [
         link: "/products"
     },
     {
-        title: "Mahsulotlar",
+        title: "To'lovlar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"],
-        link: "/account"
+        link: "/payments"
     },
     {
-        title: "Personal cabinet",
+        title: "Darajalar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$dashboard$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutDashboard$3e$__["LayoutDashboard"],
-        link: "/personal"
+        link: "/degrees"
     },
     {
         title: "Statistics",
@@ -175,10 +175,8 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 __turbopack_esm__({
     "cn": (()=>cn),
     "data": (()=>data),
-    "history": (()=>history),
     "mockCardData": (()=>mockCardData),
-    "mockData": (()=>mockData),
-    "transactions": (()=>transactions)
+    "usersData": (()=>usersData)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/clsx/dist/clsx.mjs [app-ssr] (ecmascript)");
@@ -276,108 +274,6 @@ const data = [
         bonusAmount: "1000000 $"
     }
 ];
-const mockData = [
-    {
-        id: 1,
-        fullName: "Admin Admin",
-        userId: "0000000",
-        title: "Boshlang'ich",
-        balance: 0,
-        status: "Active",
-        registerDate: "2023-03-08 13:48:50",
-        paymentTime: "2025-01-05"
-    },
-    {
-        id: 2,
-        fullName: "Test teste",
-        userId: "0000203",
-        title: "Boshlang'ich",
-        balance: 0,
-        status: "Active",
-        registerDate: "2023-05-04 11:32:42",
-        paymentTime: "2023-05-22"
-    },
-    {
-        id: 3,
-        fullName: "teste teset",
-        userId: "0000204",
-        title: "Boshlang'ich",
-        balance: 0,
-        status: "Active",
-        registerDate: "2023-05-04 12:18:07",
-        paymentTime: "2023-05-22"
-    },
-    {
-        id: 4,
-        fullName: "askldaslkd aslkdmaslkd",
-        userId: "0000332",
-        title: "Boshlang'ich",
-        balance: 0,
-        status: "None",
-        registerDate: "2023-06-16 18:57:13",
-        paymentTime: "2023-06-16"
-    },
-    {
-        id: 5,
-        fullName: "Maria Ivanova",
-        userId: "0000501",
-        title: "Senior",
-        balance: 200,
-        status: "Active",
-        registerDate: "2023-07-01 10:00:00",
-        paymentTime: "2023-07-05"
-    },
-    {
-        id: 6,
-        fullName: "John Doe",
-        userId: "0000510",
-        title: "Manager",
-        balance: 1500,
-        status: "Active",
-        registerDate: "2023-08-10 09:20:30",
-        paymentTime: "2023-08-15"
-    },
-    {
-        id: 7,
-        fullName: "Samantha Green",
-        userId: "0000545",
-        title: "Consultant",
-        balance: 700,
-        status: "Active",
-        registerDate: "2023-09-12 16:45:22",
-        paymentTime: "2023-09-20"
-    },
-    {
-        id: 8,
-        fullName: "Dmitry Petrov",
-        userId: "0000801",
-        title: "Assistant",
-        balance: 350,
-        status: "Active",
-        registerDate: "2023-10-05 08:12:40",
-        paymentTime: "2023-10-12"
-    },
-    {
-        id: 9,
-        fullName: "Olga Smirnova",
-        userId: "0000912",
-        title: "Developer",
-        balance: 1800,
-        status: "Active",
-        registerDate: "2023-11-15 14:22:30",
-        paymentTime: "2023-11-25"
-    },
-    {
-        id: 10,
-        fullName: "Petr Ivanov",
-        userId: "0001015",
-        title: "Designer",
-        balance: 1200,
-        status: "None",
-        registerDate: "2023-12-20 11:11:55",
-        paymentTime: "2024-01-02"
-    }
-];
 const mockCardData = [
     {
         id: 1,
@@ -387,7 +283,7 @@ const mockCardData = [
             className: "w-5 h-5"
         }, void 0, false, {
             fileName: "[project]/lib/utils.js",
-            lineNumber: 202,
+            lineNumber: 99,
             columnNumber: 11
         }, this),
         backgroundColor: "bg-blue-500"
@@ -400,7 +296,7 @@ const mockCardData = [
             className: "w-5 h-5"
         }, void 0, false, {
             fileName: "[project]/lib/utils.js",
-            lineNumber: 209,
+            lineNumber: 106,
             columnNumber: 11
         }, this),
         backgroundColor: "bg-green-500"
@@ -413,133 +309,124 @@ const mockCardData = [
             className: "w-5 h-5"
         }, void 0, false, {
             fileName: "[project]/lib/utils.js",
-            lineNumber: 216,
+            lineNumber: 113,
             columnNumber: 11
         }, this),
         backgroundColor: "bg-purple-500"
     }
 ];
-const history = [
+const usersData = [
     {
-        id: 1,
-        name: ". .",
-        position: "Boshlang'ish",
-        hisob: ". (0$)",
-        status: "no",
-        addedDate: "2024-04-04 14:01:07"
+        id: "1",
+        first_name: "John",
+        last_name: "Doe",
+        phone_number: "+1234567890",
+        role: "user",
+        third_name: "Smith",
+        inn: "123456789012",
+        email: "john.doe@example.com",
+        password: "securepassword123",
+        sponsor_id: "someSponsorId",
+        parent_id: null,
+        passport: "ABC1234567",
+        passport_issued: "2024-01-01T00:00:00Z",
+        passport_whom_by: "Some Authority",
+        left_id: null,
+        right_id: null,
+        parents: [],
+        children: [],
+        country: "Uzbekistan",
+        degree_id: null,
+        register_id: "UZ1234567",
+        is_active: true,
+        left_pv: 0,
+        right_pv: 0,
+        mb: 0,
+        balance: 1000
     },
     {
-        id: 2,
-        name: "Admin Admin",
-        position: "Boshlang'ish",
-        hisob: "0000000 (0$)",
-        status: "active",
-        addedDate: "2023-03-08 08:48:50"
+        id: "2",
+        first_name: "Alice",
+        last_name: "Johnson",
+        phone_number: "+9876543210",
+        role: "user",
+        third_name: "Brown",
+        inn: "987654321098",
+        email: "alice.johnson@example.com",
+        password: "securepassword456",
+        sponsor_id: "someOtherSponsorId",
+        parent_id: null,
+        passport: "XYZ9876543",
+        passport_issued: "2023-06-15T00:00:00Z",
+        passport_whom_by: "Another Authority",
+        left_id: null,
+        right_id: null,
+        parents: [],
+        children: [],
+        country: "Uzbekistan",
+        degree_id: null,
+        register_id: "UZ7654321",
+        is_active: false,
+        left_pv: 10,
+        right_pv: 15,
+        mb: 20,
+        balance: 500
     },
     {
-        id: 3,
-        name: "XJ BUSINESS",
-        position: "Boshlang'ish",
-        hisob: "0000002 (827$)",
-        status: "active",
-        addedDate: "2023-03-08 08:53:26"
+        id: "3",
+        first_name: "Nodira",
+        last_name: "Shonazarova",
+        phone_number: "+1234567801",
+        role: "admin",
+        third_name: "Shonazarova",
+        inn: "123987654321",
+        email: "nodira.shonazarova@example.com",
+        password: "adminpassword123",
+        sponsor_id: "adminSponsorId",
+        parent_id: null,
+        passport: "LMN4567890",
+        passport_issued: "2022-09-30T00:00:00Z",
+        passport_whom_by: "Admin Authority",
+        left_id: null,
+        right_id: null,
+        parents: [],
+        children: [],
+        country: "Uzbekistan",
+        degree_id: null,
+        register_id: "UZ9876543",
+        is_active: true,
+        left_pv: 50,
+        right_pv: 30,
+        mb: 40,
+        balance: 1500
     },
     {
-        id: 4,
-        name: "XJ CLUB",
-        position: "Boshlang'ish",
-        hisob: "0000003 (7316$)",
-        status: "active",
-        addedDate: "2023-03-08 08:54:32"
-    },
-    {
-        id: 5,
-        name: "xji business",
-        position: "Boshlang'ish",
-        hisob: "0000004 (486$)",
-        status: "no",
-        addedDate: "2023-03-08 09:10:58"
-    },
-    {
-        id: 6,
-        name: "xji business",
-        position: "Boshlang'ish",
-        hisob: "0000005 ($)",
-        status: "active",
-        addedDate: "2023-03-08 09:12:48"
-    },
-    {
-        id: 7,
-        name: "Nodira Shonazarova",
-        position: "Boshlang'ish",
-        hisob: "0000006 (75$)",
-        status: "no",
-        addedDate: "2023-03-08 09:16:31"
-    }
-];
-const transactions = [
-    {
-        id: 1,
-        amount: "$10",
-        status: "Qaytarildi",
-        date: "2025-01-05 18:37:17",
-        type: "returned"
-    },
-    {
-        id: 2,
-        amount: "$10",
-        status: "To'langan",
-        date: "2025-01-05 18:36:28",
-        type: "paid"
-    },
-    {
-        id: 3,
-        amount: "$10",
-        status: "To'lanmagan",
-        date: "2024-07-11 22:51:18",
-        type: "unpaid"
-    },
-    {
-        id: 4,
-        amount: "$180",
-        status: "To'lanmagan",
-        date: "2024-02-14 07:53:34",
-        type: "unpaid"
-    },
-    {
-        id: 5,
-        amount: "$60",
-        status: "To'lanmagan",
-        date: "2023-12-16 17:06:38",
-        type: "unpaid"
-    },
-    {
-        id: 6,
-        amount: "$10",
-        status: "To'lanmagan",
-        date: "2023-12-16 17:06:07",
-        type: "unpaid"
-    },
-    {
-        id: 7,
-        amount: "$10",
-        status: "To'lanmagan",
-        date: "2023-12-16 17:05:52",
-        type: "unpaid"
-    },
-    {
-        id: 8,
-        amount: "$12",
-        status: "To'lanmagan",
-        date: "2023-12-16 16:38:45",
-        type: "unpaid"
-    },
-    {
-        id: 9,
-        amount: "$10",
-        status: "To'lanmagan",
-        date: "2023-12-16 15:52:48",
-        type: "unpaid"
+        id: "4",
+        first_name: "XJ",
+        last_name: "Business",
+        phone_number: "+1987654321",
+        role: "user",
+        third_name: "XJ",
+        inn: "987123456789",
+        email: "xj.business@example.com",
+        password: "xjpassword123",
+        sponsor_id: "xjSponsorId",
+        parent_id: null,
+        passport: "OPQ1234567",
+        passport_issued: "2021-02-20T00:00:00Z",
+        passport_whom_by: "XJ Authority",
+        left_id: null,
+        right_id: null,
+        parents: [],
+        children: [],
+        country: "Uzbekistan",
+        degree_id: null,
+        register_id: "UZ0987654",
+        is_active: true,
+        left_pv: 100,
+        right_pv: 50,
+        mb: 200,
+        balance: 2000
     }
 ];
 }}),
@@ -1102,18 +989,16 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next-auth/react/index.js [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
-;
 function Provider({ children, ...props }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SessionProvider"], {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.Fragment, {
         ...props,
         children: children
     }, void 0, false, {
         fileName: "[project]/app/providers/session.provider.js",
-        lineNumber: 7,
+        lineNumber: 6,
         columnNumber: 10
     }, this);
 }

@@ -1,46 +1,8 @@
 "use client";
 
-import { Users, User2, FileText, LayoutDashboard, Wallet } from "lucide-react";
+import { AdminMenuItems } from "@/app/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const menuItems = [
-  {
-    title: "Foydalanuvchilar",
-    icon: Users,
-    link: "/",
-  },
-  {
-    title: "Brendlar",
-    icon: User2,
-    link: "/brands",
-  },
-  {
-    title: "Mahsulotlar",
-    icon: Users,
-    link: "/products",
-  },
-  {
-    title: "Mahsulotlar",
-    icon: Wallet,
-    link: "/account",
-  },
-  {
-    title: "Personal cabinet",
-    icon: LayoutDashboard,
-    link: "/personal",
-  },
-  {
-    title: "Statistics",
-    icon: FileText,
-    link: "/stats",
-  },
-  {
-    title: "Documents",
-    icon: FileText,
-    link: "/documents",
-  },
-];
 
 export function Sidebar() {
   const currentPath = usePathname();
@@ -55,7 +17,7 @@ export function Sidebar() {
 
       <nav className="flex-1 py-6 px-4">
         <ul className="space-y-4">
-          {menuItems.map((item, index) => {
+          {AdminMenuItems.map((item, index) => {
             const isActive = currentPath === item.link;
 
             return (

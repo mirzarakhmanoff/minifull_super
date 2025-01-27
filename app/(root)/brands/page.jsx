@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { FiTrash2 } from "react-icons/fi";
-
+import axios from "../../../lib/axios";
 import {
   Table,
   TableBody,
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { LoaderCircle } from "lucide-react";
 
 export default function BrandsManager() {
   const [brands, setBrands] = useState([]);
@@ -26,24 +27,30 @@ export default function BrandsManager() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingBrand, setEditingBrand] = useState(null);
   const [form, setForm] = useState({ name: "", image: "" });
+  const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState(false);
+  const [brandToDelete, setBrandToDelete] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [modalLoading, setModalLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
-  // Fetch mock brands
   const fetchBrands = async () => {
-    const mockBrands = [
-      { _id: "1", name: "Brand A", image: "/gucci.png" },
-      { _id: "2", name: "Brand B", image: "/gucci.png" },
-    ];
-    setBrands(mockBrands);
+    setLoading(true);
+    try {
+      const response = await axios.get("/brands");
+      setBrands(response.data);
+    } catch (error) {
+      console.error("Error fetching brands:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Open modal for editing
   const openEditModal = (brand) => {
     setEditingBrand(brand);
     setForm({ name: brand.name, image: brand.image });
     setModalOpen(true);
   };
 
-  // Handle image file change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -55,17 +62,56 @@ export default function BrandsManager() {
     }
   };
 
-  // Handle brand deletion
-  const deleteBrand = (id) => {
-    setBrands(brands.filter((brand) => brand._id !== id));
+  const handleDeleteBrand = (brand) => {
+    setBrandToDelete(brand);
+    setConfirmDeleteModalOpen(true);
   };
 
-  // Remove image in edit mode
-  const handleRemoveImage = () => {
-    setForm({ ...form, image: "" });
+  const deleteBrand = async () => {
+    setDeleteLoading(true);
+    try {
+      await axios.delete(`/brands/${brandToDelete._id}`);
+      setBrands(brands.filter((brand) => brand._id !== brandToDelete._id));
+      setConfirmDeleteModalOpen(false);
+      setBrandToDelete(null);
+    } catch (error) {
+      console.error("Error deleting brand:", error);
+    } finally {
+      setDeleteLoading(false);
+    }
   };
 
-  // Filter brands by search term
+  const updateBrand = async () => {
+    setModalLoading(true);
+    try {
+      const brandData = { ...form };
+      await axios.put(`/brands/${editingBrand._id}`, brandData);
+      fetchBrands();
+      setModalOpen(false);
+      setEditingBrand(null);
+      setForm({ name: "", image: "" });
+    } catch (error) {
+      console.error("Error updating brand:", error);
+    } finally {
+      setModalLoading(false);
+    }
+  };
+
+  const addBrand = async () => {
+    setModalLoading(true);
+    try {
+      const brandData = { ...form };
+      await axios.post("/brands", brandData);
+      fetchBrands();
+      setModalOpen(false);
+      setForm({ name: "", image: "" });
+    } catch (error) {
+      console.error("Error adding brand:", error);
+    } finally {
+      setModalLoading(false);
+    }
+  };
+
   const filteredBrands = brands.filter((brand) =>
     brand.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -76,7 +122,6 @@ export default function BrandsManager() {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Search and Add Brand Button */}
       <div className="flex justify-between items-center">
         <Input
           placeholder="Search brands..."
@@ -92,64 +137,68 @@ export default function BrandsManager() {
         </Button>
       </div>
 
-      {/* Brands Table */}
-      <div className="overflow-x-auto">
-        <Table className="w-full border">
-          <TableHeader>
-            <TableRow>
-              <TableHead>#</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Image</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredBrands.length > 0 ? (
-              filteredBrands.map((brand, index) => (
-                <TableRow key={brand._id}>
-                  <TableCell>{index + 1}</TableCell>
-                  <TableCell>{brand.name}</TableCell>
-                  <TableCell>
-                    <img
-                      src={brand.image}
-                      alt={brand.name}
-                      className="w-10 h-10 object-contain rounded-full"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex space-x-2">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => openEditModal(brand)}
-                        className="bg-yellow-500 text-white"
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => deleteBrand(brand._id)}
-                        className="bg-red-600 text-white"
-                      >
-                        Delete
-                      </Button>
-                    </div>
+      {loading ? (
+        <div className="flex justify-center items-center py-6">
+          <LoaderCircle className="w-8 h-8 text-blue-600 animate-spin" />
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <Table className="w-full border">
+            <TableHeader>
+              <TableRow>
+                <TableHead>#</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Image</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredBrands.length > 0 ? (
+                filteredBrands.map((brand, index) => (
+                  <TableRow key={brand._id}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{brand.name}</TableCell>
+                    <TableCell>
+                      <img
+                        src={brand.image}
+                        alt={brand.name}
+                        className="w-10 h-10 object-contain rounded-full"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex space-x-2">
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => openEditModal(brand)}
+                          className="bg-yellow-500 text-white"
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => handleDeleteBrand(brand)}
+                          className="bg-red-600 text-white"
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan="4" className="text-center">
+                    No brands found.
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan="4" className="text-center">
-                  No brands found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      )}
 
-      {/* Add/Edit Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent>
           <DialogHeader>
@@ -178,13 +227,6 @@ export default function BrandsManager() {
                     alt="Preview"
                     className="w-20 h-20 object-cover rounded-lg shadow-md"
                   />
-                  <button
-                    type="button"
-                    onClick={handleRemoveImage}
-                    className="absolute top-0 right-0 p-1 bg-red-600 text-white rounded-full text-xs"
-                  >
-                    <FiTrash2 />
-                  </button>
                 </div>
               )}
             </div>
@@ -203,13 +245,53 @@ export default function BrandsManager() {
             </Button>
             <Button
               onClick={() => {
-                setModalOpen(false);
-                setEditingBrand(null);
-                setForm({ name: "", image: "" });
+                if (editingBrand) {
+                  updateBrand();
+                } else {
+                  addBrand();
+                }
               }}
               className="bg-blue-600 text-white"
             >
-              {editingBrand ? "Save Changes" : "Add Brand"}
+              {modalLoading ? (
+                <LoaderCircle className="w-4 h-4 animate-spin" />
+              ) : editingBrand ? (
+                "Save Changes"
+              ) : (
+                "Add Brand"
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={confirmDeleteModalOpen}
+        onOpenChange={setConfirmDeleteModalOpen}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you sure?</DialogTitle>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setConfirmDeleteModalOpen(false)}
+              className="bg-gray-400 text-white"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={deleteBrand}
+              className="bg-red-600 text-white"
+            >
+              {deleteLoading ? (
+                <LoaderCircle className="w-4 h-4 animate-spin" />
+              ) : (
+                "Yes, Delete"
+              )}{" "}
+              {/* Заменили Spinner на LoaderCircle */}
             </Button>
           </DialogFooter>
         </DialogContent>

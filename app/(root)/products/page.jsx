@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -21,7 +23,7 @@ export default function Products() {
   });
   const [editingProduct, setEditingProduct] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false); // To open the delete confirmation modal
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deletingProductId, setDeletingProductId] = useState(null);
   const [deletingImageIndex, setDeletingImageIndex] = useState(null);
 
@@ -51,6 +53,7 @@ export default function Products() {
 
   useEffect(() => {
     setProducts(mockData);
+    setFilteredProducts(mockData);
   }, []);
 
   const openEditModal = (product) => {
@@ -111,9 +114,33 @@ export default function Products() {
     setDeletingImageIndex(index);
   };
 
+  // Filter products based on the search term (name, description, price)
+  useEffect(() => {
+    setFilteredProducts(
+      products.filter(
+        (product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.description
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
+          product.price.toString().includes(searchTerm)
+      )
+    );
+  }, [searchTerm, products]);
+
   return (
     <div className="p-6 space-y-6">
       <h1 className="text-2xl font-bold mb-4">Admin Panel</h1>
+
+      {/* Search input */}
+      <div className="mb-6">
+        <Input
+          placeholder="Search Products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full"
+        />
+      </div>
 
       <Button
         onClick={() => setModalOpen(true)}
@@ -123,7 +150,7 @@ export default function Products() {
       </Button>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div
             key={product._id}
             className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-all"

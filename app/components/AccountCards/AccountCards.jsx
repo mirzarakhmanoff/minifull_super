@@ -8,7 +8,7 @@ export default function AccountCards() {
         {mockCardData.map((card) => (
           <Card
             key={card.id}
-            className={`rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300 ${card.backgroundColor} text-white`}
+            className={`rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300 ${card.backgroundColor} text-black`}
           >
             <CardContent className="p-6">
               <div className="flex justify-between items-center">
