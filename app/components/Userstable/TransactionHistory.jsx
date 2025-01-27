@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -10,8 +10,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; // Importing VisuallyHidden component for accessibility
-import { usersData } from "@/lib/utils";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import {
   Table,
   TableBody,
@@ -20,10 +19,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import axiosInstance from "@/lib/axios";
+import { Loader2, Trash2 } from "lucide-react";
 
 export default function DataTable() {
   const [searchTerm, setSearchTerm] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [editedUser, setEditedUser] = useState({
     id: "",
     first_name: "",
@@ -47,6 +51,24 @@ export default function DataTable() {
     balance: 0,
   });
 
+  const [usersData, setUsersData] = useState([]);
+
+  const fetchUsers = async () => {
+    setLoading(true);
+    try {
+      const response = await axiosInstance.get("/users");
+      setUsersData(response.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   const filteredData = usersData.filter(
     (item) =>
       item.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -56,13 +78,34 @@ export default function DataTable() {
   );
 
   const handleEditClick = (user) => {
-    setEditedUser({ ...user }); // Fill the user data for editing
-    setModalOpen(true); // Open the modal
+    setEditedUser({ ...user });
+    setModalOpen(true);
   };
 
-  const handleSaveChanges = () => {
-    console.log("Updated user:", editedUser); // Logic to save changes
-    setModalOpen(false); // Close the modal after saving
+  const handleSaveChanges = async () => {
+    setLoading(true);
+    try {
+      await axiosInstance.put(`/users/${editedUser._id}`, editedUser);
+      fetchUsers();
+      setModalOpen(false);
+    } catch (error) {
+      console.error("Error updating user:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    setIsDeleting(true);
+    try {
+      await axiosInstance.delete(`/users/${id}`);
+      fetchUsers();
+      setConfirmDeleteOpen(false);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   const userFields = [
@@ -103,7 +146,7 @@ export default function DataTable() {
           </TableHeader>
           <TableBody>
             {filteredData.map((row) => (
-              <TableRow key={row.id}>
+              <TableRow key={row._id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{`${row.first_name} ${row.last_name}`}</TableCell>
                 <TableCell>{row.role}</TableCell>
@@ -124,11 +167,17 @@ export default function DataTable() {
                     variant="outline"
                     size="sm"
                     onClick={() => handleEditClick(row)}
+                    disabled={loading}
                   >
                     Edit
                   </Button>
-                  <Button variant="destructive" size="sm">
-                    Delete
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => setConfirmDeleteOpen(true)}
+                    disabled={loading}
+                  >
+                    <Trash2 className="w-4 h-4" /> Delete
                   </Button>
                 </TableCell>
               </TableRow>
@@ -137,11 +186,10 @@ export default function DataTable() {
         </Table>
       </div>
 
-      {/* Modal for editing user */}
+      {/* Edit User Modal */}
       {modalOpen && (
         <Dialog open={modalOpen} onOpenChange={setModalOpen}>
           <DialogContent className="max-w-5xl w-full p-8">
-            {/* DialogTitle added for screen readers */}
             <DialogTitle>
               <VisuallyHidden>Edit User</VisuallyHidden>
             </DialogTitle>
@@ -186,8 +234,7 @@ export default function DataTable() {
                     />
                   </div>
                 ))}
-                {/* Active Status - Select */}
-                {/* Active Status - Select */}
+
                 <div className="mb-4">
                   <Label htmlFor="is_active">Активность</Label>
                   <select
@@ -208,14 +255,55 @@ export default function DataTable() {
               </div>
             </div>
             <DialogFooter className="mt-6">
+              <Button variant="outline" onClick={() => setModalOpen(false)}>
+                Cancel
+              </Button>
+              <Button
+                variant="solid"
+                onClick={handleSaveChanges}
+                disabled={loading}
+              >
+                {loading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  "Save Changes"
+                )}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
+
+      {confirmDeleteOpen && (
+        <Dialog open={confirmDeleteOpen} onOpenChange={setConfirmDeleteOpen}>
+          <DialogContent className="w-full p-8">
+            <DialogTitle>
+              <VisuallyHidden>Confirm Deletion</VisuallyHidden>
+            </DialogTitle>
+            <DialogHeader>
+              <h3 className="text-xl font-semibold mb-6">Are you sure?</h3>
+              <p className="text-lg text-gray-600">
+                This action cannot be undone.
+              </p>
+            </DialogHeader>
+            <DialogFooter className="mt-6">
               <Button
                 variant="outline"
-                onClick={() => setModalOpen(false)} // Close modal
+                onClick={() => setConfirmDeleteOpen(false)}
+                disabled={isDeleting}
               >
                 Cancel
               </Button>
-              <Button variant="solid" onClick={handleSaveChanges}>
-                Save Changes
+              <Button
+                variant="destructive"
+                onClick={() => handleDelete(editedUser._id)}
+                disabled={isDeleting}
+              >
+                {isDeleting ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  "Delete"
+                )}
               </Button>
             </DialogFooter>
           </DialogContent>
