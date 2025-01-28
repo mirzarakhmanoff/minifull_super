@@ -5,5 +5,6 @@
   "/(root)/payments/page": "app/(root)/payments/page.js",
   "/(root)/degrees/page": "app/(root)/degrees/page.js",
   "/(root)/page": "app/(root)/page.js",
-  "/(root)/brands/page": "app/(root)/brands/page.js"
+  "/(root)/brands/page": "app/(root)/brands/page.js",
+  "/login/page": "app/login/page.js"
 }

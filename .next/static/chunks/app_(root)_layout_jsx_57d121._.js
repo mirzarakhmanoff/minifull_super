@@ -9,16 +9,55 @@ __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Sidebar$2f$Sidebar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/Sidebar/Sidebar.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Language$2f$Language$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/Language/Language.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Account$2f$Account$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/Account/Account.jsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_refresh__.signature();
 "use client";
 ;
 ;
 ;
 ;
+;
 const RootLayout = ({ children })=>{
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const [isauth, setIsAuth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RootLayout.useEffect": ()=>{
+            const token = localStorage.getItem("token");
+            if (!token) {
+                router.push("/login");
+            } else {
+                setIsAuth(true);
+            }
+            const verifyUser = {
+                "RootLayout.useEffect.verifyUser": async ()=>{
+                    try {
+                        const token = localStorage.getItem("token");
+                        if (!token) {
+                            throw new Error("Token not found");
+                        }
+                        await axios.get("http://localhost:8080/api/users/me", {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        });
+                        navigate("/dashboard");
+                    } catch (error) {
+                        navigate("/login");
+                    }
+                }
+            }["RootLayout.useEffect.verifyUser"];
+            verifyUser();
+        }
+    }["RootLayout.useEffect"], [
+        router
+    ]);
+    return isauth ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
             display: "flex",
             height: "100vh"
@@ -35,7 +74,7 @@ const RootLayout = ({ children })=>{
                 }
             }, void 0, false, {
                 fileName: "[project]/app/(root)/layout.jsx",
-                lineNumber: 9,
+                lineNumber: 44,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -58,29 +97,29 @@ const RootLayout = ({ children })=>{
                                 },
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Language$2f$Language$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Language"], {}, void 0, false, {
                                     fileName: "[project]/app/(root)/layout.jsx",
-                                    lineNumber: 30,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(root)/layout.jsx",
-                                lineNumber: 29,
+                                lineNumber: 64,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Account$2f$Account$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Account"], {}, void 0, false, {
                                     fileName: "[project]/app/(root)/layout.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(root)/layout.jsx",
-                                lineNumber: 32,
+                                lineNumber: 67,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(root)/layout.jsx",
-                        lineNumber: 21,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -92,22 +131,27 @@ const RootLayout = ({ children })=>{
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/app/(root)/layout.jsx",
-                        lineNumber: 37,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(root)/layout.jsx",
-                lineNumber: 20,
+                lineNumber: 55,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(root)/layout.jsx",
-        lineNumber: 8,
+        lineNumber: 43,
         columnNumber: 5
-    }, this);
+    }, this) : null;
 };
+_s(RootLayout, "Y90Il5O5SQ2rPZEKFwcAbNK84wM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = RootLayout;
 const __TURBOPACK__default__export__ = RootLayout;
 var _c;

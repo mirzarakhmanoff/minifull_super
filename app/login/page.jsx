@@ -1,13 +1,21 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "../../lib/axios";
 import { useRouter } from "next/navigation";
+
 export default function AdminLogin() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/login");
+    }
+  }, [router]);
 
   const validateInputs = () => {
     if (!email) {
@@ -33,16 +41,13 @@ export default function AdminLogin() {
     if (!validateInputs()) return;
 
     try {
-      // Отправляем запрос на ваш бэкенд
       const { data } = await axios.post("/users/login", {
         email,
         password,
       });
 
-      // Сохраняем токен в localStorage
       localStorage.setItem("token", data.data.token);
 
-      // Перенаправляем пользователя на защищенную страницу
       router.push("/");
     } catch (err) {
       console.error(err);

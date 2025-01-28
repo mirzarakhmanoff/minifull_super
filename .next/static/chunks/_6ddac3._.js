@@ -54,6 +54,16 @@ function AdminLogin() {
     const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [password, setPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "AdminLogin.useEffect": ()=>{
+            const token = localStorage.getItem("token");
+            if (!token) {
+                router.push("/login");
+            }
+        }
+    }["AdminLogin.useEffect"], [
+        router
+    ]);
     const validateInputs = ()=>{
         if (!email) {
             setError("Email is required.");
@@ -75,14 +85,11 @@ function AdminLogin() {
         setError("");
         if (!validateInputs()) return;
         try {
-            // Отправляем запрос на ваш бэкенд
             const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post("/users/login", {
                 email,
                 password
             });
-            // Сохраняем токен в localStorage
             localStorage.setItem("token", data.data.token);
-            // Перенаправляем пользователя на защищенную страницу
             router.push("/");
         } catch (err) {
             console.error(err);
@@ -99,7 +106,7 @@ function AdminLogin() {
                     children: "Admin Login"
                 }, void 0, false, {
                     fileName: "[project]/app/login/page.jsx",
-                    lineNumber: 58,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -107,7 +114,7 @@ function AdminLogin() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/app/login/page.jsx",
-                    lineNumber: 61,
+                    lineNumber: 66,
                     columnNumber: 19
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -123,7 +130,7 @@ function AdminLogin() {
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "[project]/app/login/page.jsx",
-                                    lineNumber: 64,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -134,13 +141,13 @@ function AdminLogin() {
                                     className: "w-full px-4 py-2 mt-1 text-gray-800 bg-gray-100 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                                 }, void 0, false, {
                                     fileName: "[project]/app/login/page.jsx",
-                                    lineNumber: 70,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/login/page.jsx",
-                            lineNumber: 63,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -152,7 +159,7 @@ function AdminLogin() {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "[project]/app/login/page.jsx",
-                                    lineNumber: 79,
+                                    lineNumber: 84,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -163,13 +170,13 @@ function AdminLogin() {
                                     className: "w-full px-4 py-2 mt-1 text-gray-800 bg-gray-100 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                                 }, void 0, false, {
                                     fileName: "[project]/app/login/page.jsx",
-                                    lineNumber: 85,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/login/page.jsx",
-                            lineNumber: 78,
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -178,28 +185,28 @@ function AdminLogin() {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "[project]/app/login/page.jsx",
-                            lineNumber: 93,
+                            lineNumber: 98,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/login/page.jsx",
-                    lineNumber: 62,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/login/page.jsx",
-            lineNumber: 57,
+            lineNumber: 62,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/login/page.jsx",
-        lineNumber: 56,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }
-_s(AdminLogin, "SxziYJeiDG1MMEe40IKGXz7ABR8=", false, function() {
+_s(AdminLogin, "W6NUkFQM8Mku1p8EOtphYa8OjZg=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
