@@ -168,6 +168,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
+    "baseImageUrl": (()=>baseImageUrl),
     "cn": (()=>cn),
     "data": (()=>data),
     "mockCardData": (()=>mockCardData),
@@ -186,6 +187,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tailwind$2d$
 function cn(...inputs) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tailwind$2d$merge$2f$dist$2f$bundle$2d$mjs$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["twMerge"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["clsx"])(inputs));
 }
+const baseImageUrl = "http://localhost:8080/uploads/";
 const data = [
     {
         id: 1,
@@ -278,7 +280,7 @@ const mockCardData = [
             className: "w-5 h-5"
         }, void 0, false, {
             fileName: "[project]/lib/utils.js",
-            lineNumber: 99,
+            lineNumber: 101,
             columnNumber: 11
         }, this),
         backgroundColor: "bg-blue-500"
@@ -291,7 +293,7 @@ const mockCardData = [
             className: "w-5 h-5"
         }, void 0, false, {
             fileName: "[project]/lib/utils.js",
-            lineNumber: 106,
+            lineNumber: 108,
             columnNumber: 11
         }, this),
         backgroundColor: "bg-green-500"
@@ -304,7 +306,7 @@ const mockCardData = [
             className: "w-5 h-5"
         }, void 0, false, {
             fileName: "[project]/lib/utils.js",
-            lineNumber: 113,
+            lineNumber: 115,
             columnNumber: 11
         }, this),
         backgroundColor: "bg-purple-500"

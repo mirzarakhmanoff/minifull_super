@@ -1,8 +1,9 @@
 {
-  "/(root)/page": "app/(root)/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(root)/brands/page": "app/(root)/brands/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/(root)/products/page": "app/(root)/products/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/(root)/payments/page": "app/(root)/payments/page.js",
-  "/(root)/degrees/page": "app/(root)/degrees/page.js"
+  "/(root)/degrees/page": "app/(root)/degrees/page.js",
+  "/(root)/page": "app/(root)/page.js",
+  "/(root)/brands/page": "app/(root)/brands/page.js"
 }
