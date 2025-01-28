@@ -1,8 +1,5 @@
 import React from "react";
-import { Sidebar } from "./components/Sidebar/Sidebar";
 import "./globals.css";
-import { Language } from "./components/Language/Language";
-import { Account } from "./components/Account/Account";
 import { Provider } from "./providers/session.provider";
 
 export default function Layout({ children }) {

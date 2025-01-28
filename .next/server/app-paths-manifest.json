@@ -6,5 +6,15 @@
   "/(root)/degrees/page": "app/(root)/degrees/page.js",
   "/(root)/page": "app/(root)/page.js",
   "/(root)/brands/page": "app/(root)/brands/page.js",
-  "/login/page": "app/login/page.js"
+  "/login/page": "app/login/page.js",
+  "/admin/(root)/page": "app/admin/(root)/page.js",
+  "/admin/(root)/brands/page": "app/admin/(root)/brands/page.js",
+  "/admin/(root)/products/page": "app/admin/(root)/products/page.js",
+  "/admin/(root)/payments/page": "app/admin/(root)/payments/page.js",
+  "/user/(root)/page": "app/user/(root)/page.js",
+  "/user/(root)/degree/page": "app/user/(root)/degree/page.js",
+  "/user/(root)/account/page": "app/user/(root)/account/page.js",
+  "/user/(root)/my-people/page": "app/user/(root)/my-people/page.js",
+  "/user/(root)/personal/page": "app/user/(root)/personal/page.js",
+  "/user/(root)/stats/page": "app/user/(root)/stats/page.js"
 }
