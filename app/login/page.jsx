@@ -48,7 +48,18 @@ export default function AdminLogin() {
 
       localStorage.setItem("token", data.data.token);
 
-      router.push("/");
+      const role = data?.data?.user?.role;
+
+      if (role === "admin") {
+        localStorage.setItem("role", role);
+        router.push("/admin");
+      } else if (role === "user") {
+        localStorage.setItem("role", role);
+        router.push("/user");
+      } else {
+        setError("Invalid role");
+      }
+      // router.push("/");
     } catch (err) {
       console.error(err);
       setError(

@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/mirzorakhmanoff/Desktop/minifull_super/app/%28root%29/layout.jsx"],"sourcesContent":["\"use client\";\nimport { useRouter } from \"next/navigation\";\nimport { useEffect } from \"react\";\n\nconst RootLayout = ({ children }) => {\n  const router = useRouter();\n  useEffect(() => {\n    if (window !== undefined) {\n      const role = localStorage.getItem(\"role\");\n      if (role === \"admin\") {\n        router.push(\"/admin\");\n      } else if (role === \"user\") {\n        router.push(\"/user\");\n      } else {\n        router.push(\"/login\");\n      }\n    }\n  }, [router]);\n  return children;\n};\n\nexport default RootLayout;\n"],"names":[],"mappings":";;;AACA;AACA;;AAFA;;;AAIA,MAAM,aAAa,CAAC,EAAE,QAAQ,EAAE;;IAC9B,MAAM,SAAS,CAAA,GAAA,qIAAA,CAAA,YAAS,AAAD;IACvB,CAAA,GAAA,6JAAA,CAAA,YAAS,AAAD;gCAAE;YACR,IAAI,WAAW,WAAW;gBACxB,MAAM,OAAO,aAAa,OAAO,CAAC;gBAClC,IAAI,SAAS,SAAS;oBACpB,OAAO,IAAI,CAAC;gBACd,OAAO,IAAI,SAAS,QAAQ;oBAC1B,OAAO,IAAI,CAAC;gBACd,OAAO;oBACL,OAAO,IAAI,CAAC;gBACd;YACF;QACF;+BAAG;QAAC;KAAO;IACX,OAAO;AACT;GAfM;;QACW,qIAAA,CAAA,YAAS;;;KADpB;uCAiBS"}},
+    {"offset": {"line": 49, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 59, "column": 0}, "map": {"version":3,"sources":["file:///Users/mirzorakhmanoff/Desktop/minifull_super/node_modules/next/navigation.js"],"sourcesContent":["module.exports = require('./dist/client/components/navigation')\n"],"names":[],"mappings":"AAAA,OAAO,OAAO","ignoreList":[0]}},
+    {"offset": {"line": 60, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

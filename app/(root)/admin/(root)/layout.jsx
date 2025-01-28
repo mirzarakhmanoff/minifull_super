@@ -22,7 +22,7 @@ const RootLayout = ({ children }) => {
             throw new Error("Token not found");
           }
 
-          await axiosInstance.get("http://localhost:8080/api/users/me", {
+          await axiosInstance.get("http://localhost:8080/api/users/admin/me", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
