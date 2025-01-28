@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Image from "next/image";
-import avatar from "../../../public/avatar.jpg";
+import avatar from "@/public/avatar.jpg";
 
 export default function Degrees() {
   const [degrees, setDegrees] = useState([]);

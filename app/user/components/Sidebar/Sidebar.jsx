@@ -1,46 +1,9 @@
 "use client";
 
+import { userMenuItems } from "@/app/constants";
 import { Users, User2, FileText, LayoutDashboard, Wallet } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const menuItems = [
-  {
-    title: "Tree",
-    icon: Users,
-    link: "/tree",
-  },
-  {
-    title: "User degree",
-    icon: User2,
-    link: "/degree",
-  },
-  {
-    title: "My people",
-    icon: Users,
-    link: "/my-people",
-  },
-  {
-    title: "Account",
-    icon: Wallet,
-    link: "/account",
-  },
-  {
-    title: "Personal cabinet",
-    icon: LayoutDashboard,
-    link: "/personal",
-  },
-  {
-    title: "Statistics",
-    icon: FileText,
-    link: "/stats",
-  },
-  {
-    title: "Documents",
-    icon: FileText,
-    link: "/documents",
-  },
-];
 
 export function Sidebar() {
   const currentPath = usePathname();
@@ -55,7 +18,7 @@ export function Sidebar() {
 
       <nav className="flex-1 py-6 px-4">
         <ul className="space-y-4">
-          {menuItems.map((item, index) => {
+          {userMenuItems.map((item, index) => {
             const isActive = currentPath === item.link;
 
             return (

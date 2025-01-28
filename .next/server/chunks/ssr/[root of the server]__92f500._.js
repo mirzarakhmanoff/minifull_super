@@ -6,7 +6,8 @@ module.exports = {
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
-    "AdminMenuItems": (()=>AdminMenuItems)
+    "AdminMenuItems": (()=>AdminMenuItems),
+    "userMenuItems": (()=>userMenuItems)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$round$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__User2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/user-round.js [app-ssr] (ecmascript) <export default as User2>");
@@ -18,37 +19,64 @@ const AdminMenuItems = [
     {
         title: "Foydalanuvchilar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"],
-        link: "/"
+        link: "/admin"
     },
     {
         title: "Brendlar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$round$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__User2$3e$__["User2"],
-        link: "/brands"
+        link: "/admin/brands"
     },
     {
         title: "Mahsulotlar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"],
-        link: "/products"
+        link: "/admin/products"
     },
     {
         title: "To'lovlar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"],
-        link: "/payments"
+        link: "/admin/payments"
     },
     {
         title: "Darajalar",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$dashboard$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutDashboard$3e$__["LayoutDashboard"],
-        link: "/degrees"
+        link: "/admin/degrees"
+    }
+];
+const userMenuItems = [
+    {
+        title: "Tree",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"],
+        link: "/user/tree"
+    },
+    {
+        title: "User degree",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$round$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__User2$3e$__["User2"],
+        link: "/user/degree"
+    },
+    {
+        title: "My people",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"],
+        link: "/user/my-people"
+    },
+    {
+        title: "Account",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"],
+        link: "/user/account"
+    },
+    {
+        title: "Personal cabinet",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$dashboard$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutDashboard$3e$__["LayoutDashboard"],
+        link: "/user/personal"
     },
     {
         title: "Statistics",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"],
-        link: "/stats"
+        link: "/user/stats"
     },
     {
         title: "Documents",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"],
-        link: "/documents"
+        link: "/user/documents"
     }
 ];
 }}),
@@ -179,7 +207,11 @@ __turbopack_esm__({
     "baseImageUrl": (()=>baseImageUrl),
     "cn": (()=>cn),
     "data": (()=>data),
+    "dataa": (()=>dataa),
     "mockCardData": (()=>mockCardData),
+    "mockCardDataa": (()=>mockCardDataa),
+    "mockData": (()=>mockData),
+    "transactions": (()=>transactions),
     "usersData": (()=>usersData)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
@@ -187,6 +219,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$clsx$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/wallet.js [app-ssr] (ecmascript) <export default as Wallet>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$coins$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Coins$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/coins.js [app-ssr] (ecmascript) <export default as Coins>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$crown$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Crown$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/crown.js [app-ssr] (ecmascript) <export default as Crown>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tailwind$2d$merge$2f$dist$2f$bundle$2d$mjs$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/tailwind-merge/dist/bundle-mjs.mjs [app-ssr] (ecmascript)");
 ;
 ;
@@ -279,7 +312,7 @@ const data = [
         bonusAmount: "1000000 $"
     }
 ];
-const mockCardData = [
+const mockCardDataa = [
     {
         id: 1,
         title: "Umumiy Foydalanuvchilar",
@@ -432,6 +465,336 @@ const usersData = [
         right_pv: 50,
         mb: 200,
         balance: 2000
+    }
+];
+const dataa = [
+    {
+        id: 1,
+        fullName: "ABCD",
+        title: "Менеджер",
+        personalPartners: "0 ta",
+        activeRange: "1 Month",
+        lowNumberOfNetworkUsers: "15",
+        bonusAmount: "Саъхат"
+    },
+    {
+        id: 2,
+        fullName: "ABCD",
+        title: "Бронза",
+        personalPartners: "3 ta",
+        activeRange: "2 Month",
+        lowNumberOfNetworkUsers: "50",
+        bonusAmount: "Оилавий саёхат"
+    },
+    {
+        id: 3,
+        fullName: "ABCD",
+        title: "Серебро",
+        personalPartners: "5 ta",
+        activeRange: "3 Month",
+        lowNumberOfNetworkUsers: "150",
+        bonusAmount: "10000 $"
+    },
+    {
+        id: 4,
+        fullName: "ABCD",
+        title: "Золото",
+        personalPartners: "3 ta Менеджер",
+        activeRange: "3 Month",
+        lowNumberOfNetworkUsers: "300",
+        bonusAmount: "20000 $"
+    },
+    {
+        id: 5,
+        fullName: "ABCD",
+        title: "Платина",
+        personalPartners: "2 ta Бронза",
+        activeRange: "4 Month",
+        lowNumberOfNetworkUsers: "500",
+        bonusAmount: "50000 $"
+    },
+    {
+        id: 6,
+        fullName: "ABCD",
+        title: "Рубин",
+        personalPartners: "4 ta Серебро",
+        activeRange: "4 Month",
+        lowNumberOfNetworkUsers: "1500",
+        bonusAmount: "100000 $"
+    },
+    {
+        id: 7,
+        fullName: "ABCD",
+        title: "Изумруд",
+        personalPartners: "3 ta Золото",
+        activeRange: "5 Month",
+        lowNumberOfNetworkUsers: "3000",
+        bonusAmount: "250000 $"
+    },
+    {
+        id: 8,
+        fullName: "ABCD",
+        title: "Бриллиант",
+        personalPartners: "4 ta Платина",
+        activeRange: "6 Month",
+        lowNumberOfNetworkUsers: "5000",
+        bonusAmount: "500000 $"
+    },
+    {
+        id: 9,
+        fullName: "ABCD",
+        title: "Мерос",
+        personalPartners: "4 ta Изумруд",
+        activeRange: "6 Month",
+        lowNumberOfNetworkUsers: "10000",
+        bonusAmount: "1000000 $"
+    }
+];
+const mockData = [
+    {
+        id: 1,
+        fullName: "Admin Admin",
+        userId: "0000000",
+        title: "Boshlang'ich",
+        balance: 0,
+        status: "Active",
+        registerDate: "2023-03-08 13:48:50",
+        paymentTime: "2025-01-05"
+    },
+    {
+        id: 2,
+        fullName: "Test teste",
+        userId: "0000203",
+        title: "Boshlang'ich",
+        balance: 0,
+        status: "Active",
+        registerDate: "2023-05-04 11:32:42",
+        paymentTime: "2023-05-22"
+    },
+    {
+        id: 3,
+        fullName: "teste teset",
+        userId: "0000204",
+        title: "Boshlang'ich",
+        balance: 0,
+        status: "Active",
+        registerDate: "2023-05-04 12:18:07",
+        paymentTime: "2023-05-22"
+    },
+    {
+        id: 4,
+        fullName: "askldaslkd aslkdmaslkd",
+        userId: "0000332",
+        title: "Boshlang'ich",
+        balance: 0,
+        status: "None",
+        registerDate: "2023-06-16 18:57:13",
+        paymentTime: "2023-06-16"
+    },
+    {
+        id: 5,
+        fullName: "Maria Ivanova",
+        userId: "0000501",
+        title: "Senior",
+        balance: 200,
+        status: "Active",
+        registerDate: "2023-07-01 10:00:00",
+        paymentTime: "2023-07-05"
+    },
+    {
+        id: 6,
+        fullName: "John Doe",
+        userId: "0000510",
+        title: "Manager",
+        balance: 1500,
+        status: "Active",
+        registerDate: "2023-08-10 09:20:30",
+        paymentTime: "2023-08-15"
+    },
+    {
+        id: 7,
+        fullName: "Samantha Green",
+        userId: "0000545",
+        title: "Consultant",
+        balance: 700,
+        status: "Active",
+        registerDate: "2023-09-12 16:45:22",
+        paymentTime: "2023-09-20"
+    },
+    {
+        id: 8,
+        fullName: "Dmitry Petrov",
+        userId: "0000801",
+        title: "Assistant",
+        balance: 350,
+        status: "Active",
+        registerDate: "2023-10-05 08:12:40",
+        paymentTime: "2023-10-12"
+    },
+    {
+        id: 9,
+        fullName: "Olga Smirnova",
+        userId: "0000912",
+        title: "Developer",
+        balance: 1800,
+        status: "Active",
+        registerDate: "2023-11-15 14:22:30",
+        paymentTime: "2023-11-25"
+    },
+    {
+        id: 10,
+        fullName: "Petr Ivanov",
+        userId: "0001015",
+        title: "Designer",
+        balance: 1200,
+        status: "None",
+        registerDate: "2023-12-20 11:11:55",
+        paymentTime: "2024-01-02"
+    }
+];
+const mockCardData = [
+    {
+        id: 1,
+        title: "Balans",
+        value: "$540",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"], {
+            className: "w-5 h-5"
+        }, void 0, false, {
+            fileName: "[project]/lib/utils.js",
+            lineNumber: 428,
+            columnNumber: 11
+        }, this),
+        backgroundColor: "bg-blue-500"
+    },
+    {
+        id: 2,
+        title: "Tarmoq foydalanuvchilari kamligi",
+        value: "0",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+            className: "w-5 h-5"
+        }, void 0, false, {
+            fileName: "[project]/lib/utils.js",
+            lineNumber: 435,
+            columnNumber: 11
+        }, this),
+        backgroundColor: "bg-emerald-500"
+    },
+    {
+        id: 3,
+        title: "Bonus summasi",
+        value: "$305",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$coins$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Coins$3e$__["Coins"], {
+            className: "w-5 h-5"
+        }, void 0, false, {
+            fileName: "[project]/lib/utils.js",
+            lineNumber: 442,
+            columnNumber: 11
+        }, this),
+        backgroundColor: "bg-purple-500"
+    },
+    {
+        id: 4,
+        title: "Sarlavha",
+        value: "AAA",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$crown$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Crown$3e$__["Crown"], {
+            className: "w-5 h-5"
+        }, void 0, false, {
+            fileName: "[project]/lib/utils.js",
+            lineNumber: 449,
+            columnNumber: 11
+        }, this),
+        backgroundColor: "bg-transparent"
+    },
+    {
+        id: 5,
+        title: "Faol diapazon",
+        value: "BBB",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"], {
+            className: "w-5 h-5"
+        }, void 0, false, {
+            fileName: "[project]/lib/utils.js",
+            lineNumber: 456,
+            columnNumber: 11
+        }, this),
+        backgroundColor: "bg-transparent"
+    },
+    {
+        id: 6,
+        title: "Bonus summasi",
+        value: "$123456",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$coins$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Coins$3e$__["Coins"], {
+            className: "w-5 h-5"
+        }, void 0, false, {
+            fileName: "[project]/lib/utils.js",
+            lineNumber: 463,
+            columnNumber: 11
+        }, this),
+        backgroundColor: "bg-transparent"
+    }
+];
+const transactions = [
+    {
+        id: 1,
+        amount: "$10",
+        status: "Qaytarildi",
+        date: "2025-01-05 18:37:17",
+        type: "returned"
+    },
+    {
+        id: 2,
+        amount: "$10",
+        status: "To'langan",
+        date: "2025-01-05 18:36:28",
+        type: "paid"
+    },
+    {
+        id: 3,
+        amount: "$10",
+        status: "To'lanmagan",
+        date: "2024-07-11 22:51:18",
+        type: "unpaid"
+    },
+    {
+        id: 4,
+        amount: "$180",
+        status: "To'lanmagan",
+        date: "2024-02-14 07:53:34",
+        type: "unpaid"
+    },
+    {
+        id: 5,
+        amount: "$60",
+        status: "To'lanmagan",
+        date: "2023-12-16 17:06:38",
+        type: "unpaid"
+    },
+    {
+        id: 6,
+        amount: "$10",
+        status: "To'lanmagan",
+        date: "2023-12-16 17:06:07",
+        type: "unpaid"
+    },
+    {
+        id: 7,
+        amount: "$10",
+        status: "To'lanmagan",
+        date: "2023-12-16 17:05:52",
+        type: "unpaid"
+    },
+    {
+        id: 8,
+        amount: "$12",
+        status: "To'lanmagan",
+        date: "2023-12-16 16:38:45",
+        type: "unpaid"
+    },
+    {
+        id: 9,
+        amount: "$10",
+        status: "To'lanmagan",
+        date: "2023-12-16 15:52:48",
+        type: "unpaid"
     }
 ];
 }}),

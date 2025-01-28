@@ -16,5 +16,8 @@
   "/user/(root)/account/page": "app/user/(root)/account/page.js",
   "/user/(root)/my-people/page": "app/user/(root)/my-people/page.js",
   "/user/(root)/personal/page": "app/user/(root)/personal/page.js",
-  "/user/(root)/stats/page": "app/user/(root)/stats/page.js"
+  "/user/(root)/stats/page": "app/user/(root)/stats/page.js",
+  "/user/(root)/tree/page": "app/user/(root)/tree/page.js",
+  "/admin/(root)/degrees/page": "app/admin/(root)/degrees/page.js",
+  "/user/(root)/documents/page": "app/user/(root)/documents/page.js"
 }
